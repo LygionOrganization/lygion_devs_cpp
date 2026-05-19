@@ -1,11 +1,11 @@
-/*
- * LYSerial.h
- * LY串行通信硬件接口层程序
- * 日期: 2025.12.09
+﻿/*
+ * lyserial.h
+ * 串行通信硬件接口层程序
+ * 日期: 2026.518
  * 作者: txl
  */
 
-#include "LYSerial.h"
+#include "lyserial.h"
 
 LYSerial::LYSerial()
 {

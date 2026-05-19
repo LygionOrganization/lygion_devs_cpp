@@ -1,12 +1,12 @@
 ﻿/*
- * LYS.cpp
- * LYS串行通信层协议程序
- * 日期: 2025.12.09
+ * lys.cpp
+ * 串行通信层协议程序
+ * 日期: 2026.5.18
  * 作者: txl
  */
 
 #include <stddef.h>
-#include "LYS.h"
+#include "lys.h"
 
 LYS::LYS()
 {
@@ -445,6 +445,26 @@ int LYS::Recal(u8 ID)
 {
 	rFlushSCS();
 	writeBuf(ID, 0, NULL, 0, LYST_CAL);
+	wFlushSCS();
+	return Ack(ID);
+}
+
+int LYS::Recal(u8 ID, u16 ofs)
+{
+	rFlushSCS();
+	u8 bBuf[7];
+	u8 CheckSum = 0;
+	bBuf[0] = 0xff;
+	bBuf[1] = 0xff;
+	bBuf[2] = ID;
+	bBuf[3] = 4;
+	bBuf[4] = LYST_CAL;
+	Host2SCS(bBuf+5, bBuf+6, ofs);
+	writeSCS(bBuf, 6);
+	for(u8 i=2; i<6; i++){
+		CheckSum += bBuf[i];
+	}
+	writeSCS(~CheckSum);
 	wFlushSCS();
 	return Ack(ID);
 }

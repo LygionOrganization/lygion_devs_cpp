@@ -1,11 +1,11 @@
 ﻿/*
- * LYNode.cpp
- * LYNode应用层程序
- * 日期: 2025.12.09
+ * lynode.cpp
+ * lynode应用层程序
+ * 日期: 2026.5.18
  * 作者: txl
  */
 
-#include "LYNode.h"
+#include "lynode.h"
 
 NodeClass::NodeClass()
 {
