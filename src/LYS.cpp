@@ -460,8 +460,8 @@ int LYS::Recal(u8 ID, u16 ofs)
 	bBuf[3] = 4;
 	bBuf[4] = LYST_CAL;
 	Host2SCS(bBuf+5, bBuf+6, ofs);
-	writeSCS(bBuf, 6);
-	for(u8 i=2; i<6; i++){
+	writeSCS(bBuf, 7);
+	for(u8 i=2; i<7; i++){
 		CheckSum += bBuf[i];
 	}
 	writeSCS(~CheckSum);
